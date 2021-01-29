@@ -1,5 +1,0 @@
-{
-  "AUTH": true,
-  "LOG_FORMAT": "[%(asctime)s] [%(remote_addr)s] %(levelname)s in %(module)s.%(funcName)s(l:%(lineno)s): %(message)s",
-  "FLASK_ENV": "development"
-}
