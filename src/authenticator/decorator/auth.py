@@ -1,7 +1,7 @@
 import functools
 from typing import Type
 
-from src.authoricator.authoricator import AuthStrategy
+from src.authenticator.authenticator import AuthStrategy
 
 
 def pre_auth(strategy: Type[AuthStrategy]):

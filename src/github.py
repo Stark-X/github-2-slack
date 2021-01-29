@@ -4,7 +4,7 @@ import os
 from flask import request, current_app
 
 from src import utils
-from src.authoricator.authoricator import AuthStrategy
+from src.authenticator.authenticator import AuthStrategy
 from src.errors.exceptions import business
 
 

@@ -1,4 +1,4 @@
-from src.authoricator.decorator import auth
+from src.authenticator.decorator import auth
 from src.factory import create_app
 from src.github import GithubRequest
 
