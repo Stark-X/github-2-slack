@@ -19,21 +19,22 @@ class GithubAuth(AuthStrategy):
 
     @staticmethod
     def exec_auth():
-        sign = GithubAuth._extract_sign()
         secret = GithubAuth._get_secret()
-        payload = "" if request.json is None else request.json
-        remote_sign = utils.get_signature(secret, payload)
-        if utils.verify_signature(sign, remote_sign) is False:
+        local_sign = utils.get_signature(secret, request.get_data())
+
+        from_header_sign = GithubAuth.extract_sign_from_header()
+        if utils.verify_signature(from_header_sign, local_sign) is False:
             current_app.logger.warn("signature authorization failure")
             raise business.AUTH_ERROR
 
     @staticmethod
-    def _extract_sign():
+    def extract_sign_from_header():
         signature = request.headers.get("X-Hub-Signature-256")
         if signature is None:
             current_app.logger.warn("header not found")
             raise business.AUTH_ERROR
-        return signature.strip()
+        splits = signature.split("=")
+        return splits[1].strip() if len(splits) == 2 else ""
 
     @staticmethod
     def _get_secret():
