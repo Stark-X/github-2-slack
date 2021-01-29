@@ -9,3 +9,9 @@ app = create_app()
 @auth.pre_auth(GithubAuth)
 def hello():
     return "Hello World!"
+
+
+@app.route("/github", methods=["POST"])
+@auth.pre_auth(GithubAuth)
+def github():
+    return "Success"

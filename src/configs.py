@@ -1,4 +1,4 @@
 class DefaultConfig(object):
-    DEBUG = False
+    FLASK_ENV = "production"
     TESTING = False
     AUTH = True

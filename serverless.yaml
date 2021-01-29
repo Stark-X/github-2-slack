@@ -18,9 +18,26 @@ provider:
   region: ap-east-1
   apiGateway:
     shouldStartNameWithService: true
+  memorySize: 128
+  logRetentionInDays: 7
+  environment:
+    GITHUB_SECRET: 123
+  deploymentBucket:
+    blockPublicAccess: true
+    maxPreviousDeploymentArtifacts: 3
 
 functions:
   app:
     handler: wsgi_handler.handler
     events:
       - http: ANY /
+  github:
+    handler: wsgi_handler.handler
+    events:
+      - http: POST /github
+
+package:
+  exclude:
+    - .git/**
+    - .pytest_cache/**
+    - .idea/**
