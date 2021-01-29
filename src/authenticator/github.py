@@ -33,7 +33,7 @@ class GithubAuth(AuthStrategy):
         if signature is None:
             current_app.logger.warn("header not found")
             raise business.AUTH_ERROR
-        return signature.split(":")[1].strip()
+        return signature.strip()
 
     @staticmethod
     def _get_secret():
