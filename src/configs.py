@@ -1,4 +1,4 @@
-class Config(object):
+class DefaultConfig(object):
     DEBUG = False
     TESTING = False
     AUTH = True

@@ -1,3 +1,4 @@
 {
-  "AUTH": true
+  "AUTH": true,
+  "LOG_FORMAT": "[%(asctime)s] %(levelname)s in %(module)s.%(funcName)s(l:%(lineno)s): %(message)s"
 }
