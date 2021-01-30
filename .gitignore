@@ -382,3 +382,5 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm,vim,python,serverless,node
+
+secret.json
