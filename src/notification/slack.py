@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import logging
+from typing import List
 
 from flask import Flask
 # noinspection PyProtectedMember
@@ -32,9 +33,9 @@ class SlackClient(object):
     def connect(self):
         return WebClient(token=self._token)
 
-    def send_message(self, channel: str, msg: str) -> str:
+    def send_message(self, channel: str, msg: str, blocks: List[dict] = None) -> str:
         try:
-            response = self.connection.chat_postMessage(channel=channel, text=msg)
+            response = self.connection.chat_postMessage(channel=channel, text=msg, blocks=blocks)
             return response["message"]["text"]
         except SlackApiError as e:
             logging.error(f"slack failed: {e}")
