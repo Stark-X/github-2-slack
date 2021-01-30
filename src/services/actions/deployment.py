@@ -20,7 +20,8 @@ class DeploymentAction(GithubAction):
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": f"A new blog publish has been processing! :partying_face: :the_horns: :partying_face:\n [DEPLOYMENT]({url})",
+                    "text": f"A new blog publish has been processing! :the_horns: :partying_face: :the_horns:\n"
+                            f"<{url}|DEPLOYMENT>",
                 }
             }
         ]
