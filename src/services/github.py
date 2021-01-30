@@ -1,3 +1,5 @@
+from flask import request
+
 from src.factory import slack_client
 from . import strategies
 from .actions.unsupported import UnSupportedAction
@@ -5,7 +7,7 @@ from .actions.unsupported import UnSupportedAction
 
 class EventDispatcher(object):
     def dispatch(self, payload: dict) -> str:
-        action_name = self.extract_action(payload)
+        action_name = self.extract_action()
         action_cls = strategies.get(action_name)
         if action_cls is None:
             action = UnSupportedAction(action_name)
@@ -16,5 +18,5 @@ class EventDispatcher(object):
         return slack_client.send_message("#blog", title, message_blocks)
 
     @staticmethod
-    def extract_action(payload: dict) -> str:
-        return payload.get("action")
+    def extract_action() -> str:
+        return request.headers.get("X-GitHub-Event")
