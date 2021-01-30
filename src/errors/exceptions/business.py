@@ -11,3 +11,4 @@ class BizException(Exception):
 
 
 AUTH_ERROR = BizException(401, "auth error")
+REMOTE_ERROR = BizException(500, "remote error")

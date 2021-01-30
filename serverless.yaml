@@ -21,8 +21,6 @@ provider:
   memorySize: 128
   logRetentionInDays: 7
   environment:
-    # set correct secret on the AWS Lambda console
-    GITHUB_SECRET: 123
   deploymentBucket:
     blockPublicAccess: true
     maxPreviousDeploymentArtifacts: 3

@@ -1,10 +1,10 @@
-import os
-
 from flask import request, current_app
 
 from src import utils
 from src.authenticator.authenticator import AuthStrategy
 from src.errors.exceptions import business
+
+CONFIG_KEY = "GITHUB_SECRET"
 
 
 class GithubAuth(AuthStrategy):
@@ -38,7 +38,7 @@ class GithubAuth(AuthStrategy):
 
     @staticmethod
     def _get_secret():
-        ret = os.environ.get("GITHUB_SECRET")
+        ret = current_app.config.get(CONFIG_KEY)
         if ret is None:
             current_app.logger.error("env config not found")
             raise business.AUTH_ERROR
